@@ -1,0 +1,43 @@
+classDiagram
+class midnightCafe {
+    
+}
+
+class cafeEmployee {
+    ~employeeName : String
+    ~employeeID : int
+    +takeOrder() : void
+}
+
+class cafeCustomer {
+    ~customerName : String
+    ~customerID : int
+    +placeOrder() : void
+    <<interface>> +cafeReward : void
+}
+
+class cafeMenu {
+    ~option : int
+    ~price : float
+    +calculateTotal() : void
+}
+
+class cafeReceipt {
+    ~total : float
+    +employeeName : String
+    +employeeID : int
+    +customerName : String
+    +customerID : int
+    +rank : String
+    +printReceipt()
+    
+}
+
+midnightCafe "1" <|-- "1..*" cafeEmployee : extends
+midnightCafe "1" <|-- "0..*" cafeCustomer : extends
+midnightCafe "1" <|-- "1" cafeMenu : extends
+midnightCafe "1" <|-- "0..*" cafeReceipt : extends
+
+
+
+
